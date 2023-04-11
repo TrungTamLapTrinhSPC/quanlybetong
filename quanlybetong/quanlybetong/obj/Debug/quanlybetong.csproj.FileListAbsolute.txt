@@ -31,3 +31,13 @@ E:\quanlybetong\quanlybetong\obj\Debug\quanlybetong.csproj.GenerateResource.cach
 E:\quanlybetong\quanlybetong\obj\Debug\quanlybetong.csproj.CoreCompileInputs.cache
 E:\quanlybetong\quanlybetong\obj\Debug\quanlybetong.exe
 E:\quanlybetong\quanlybetong\obj\Debug\quanlybetong.pdb
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\bin\Debug\quanlybetong.exe.config
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\obj\Debug\quanlybetong.exe
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\obj\Debug\quanlybetong.pdb
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\bin\Debug\quanlybetong.exe
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\bin\Debug\quanlybetong.pdb
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\obj\Debug\quanlybetong.csprojResolveAssemblyReference.cache
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\obj\Debug\quanlybetong.Form1.resources
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\obj\Debug\quanlybetong.Properties.Resources.resources
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\obj\Debug\quanlybetong.csproj.GenerateResource.Cache
+D:\12.DaoTao-SPEC\C#\quanlybetong\quanlybetong\quanlybetong\obj\Debug\quanlybetong.Form2.resources

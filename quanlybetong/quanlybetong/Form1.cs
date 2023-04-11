@@ -19,53 +19,70 @@ namespace quanlybetong
         {
             InitializeComponent();
         }
+        private void resetView()
+        {
+            dgr_danhsach.Rows.Clear();
+            foreach (quanlyvatlieu bt in cls_Bien.DanhSachBeTong)
+                dgr_danhsach.Rows.Add(dgr_danhsach.Rows.Count + 1, bt.Name, bt.ChieuRong.ToString(), bt.ChieuDai.ToString(), bt.ChieuCao.ToString(),bt.DienTich().ToString());
 
+            //Kiểm tra điều kiện
+
+        }
         private void btn_them_Click(object sender, EventArgs e)
         {
 
+            //Kiểm tra tra xem số âm, nhập chữ số
+
             //int i = 0;
-            quanlyvatlieu ql = new quanlyvatlieu();
-            //ql.STT.Add[i].Cells[0].Value = i+1;
-            ql.Name = txt_name.Text;
+            quanlyvatlieu ql = new quanlyvatlieu() { Name = txt_name.Text, ChieuCao = double.Parse(txt_h.Text),
+            ChieuDai = double.Parse(txt_l.Text),
+            ChieuRong = double.Parse(txt_b.Text),
+            };
+            cls_Bien.DanhSachBeTong.Add(ql);
+            bool kt = ql.KiemTra(double.Parse(txt_dientich.Text));
 
-            ql.chieudai = txt_l.Text;
+            resetView();
+            ////ql.STT.Add[i].Cells[0].Value = i+1;
+            //ql.Name = txt_name.Text;
 
-            ql.berong = txt_b.Text;
+            //ql.chieudai = txt_l.Text;
 
-            ql.Chieucao = txt_h.Text;
+            //ql.berong = txt_b.Text;
 
-            // Thêm đối tượng vào DataGridView
-            dgr_danhsach.Rows.Add(ql.STT,ql.Name, ql.berong,ql.chieudai,ql.Chieucao);
+            //ql.Chieucao = txt_h.Text;
 
-            double chieuDai = double.Parse(txt_l.Text);
-            double chieuRong = double.Parse(txt_b.Text);
+            //// Thêm đối tượng vào DataGridView
+            //dgr_danhsach.Rows.Add(ql.STT,ql.Name, ql.berong,ql.chieudai,ql.Chieucao);
 
-            // Tính diện tích hình chữ nhật
-            double dienTich = chieuDai * chieuRong;
+            //double chieuDai = double.Parse(txt_l.Text);
+            //double chieuRong = double.Parse(txt_b.Text);
 
-            // Hiển thị kết quả trong ô textbox
-            txt_dientich.Text = dienTich.ToString();
+            //// Tính diện tích hình chữ nhật
+            //double dienTich = chieuDai * chieuRong;
 
-            txt_name.Clear();
-            txt_l.Clear();
-            txt_b.Clear();
-            txt_h.Clear();
+            //// Hiển thị kết quả trong ô textbox
+            //txt_dientich.Text = dienTich.ToString();
+
+            //txt_name.Clear();
+            //txt_l.Clear();
+            //txt_b.Clear();
+            //txt_h.Clear();
 
 
-            //kiem tra dieu kien
-            for (int i = 0; i < dgr_danhsach.Rows.Count; i++)
-            {
-                DataGridViewRow row = dgr_danhsach.Rows[i];
-                int dientich = Convert.ToInt32(txt_dientich.Text);
-                if (dientich > 500)
-                {
-                    row.DefaultCellStyle.BackColor = Color.Red;
-                }
-                else
-                {
-                    row.DefaultCellStyle.BackColor = Color.White;
-                }
-            }
+            ////kiem tra dieu kien
+            //for (int i = 0; i < dgr_danhsach.Rows.Count; i++)
+            //{
+            //    DataGridViewRow row = dgr_danhsach.Rows[i];
+            //    int dientich = Convert.ToInt32(txt_dientich.Text);
+            //    if (dientich > 500)
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.Red;
+            //    }
+            //    else
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.White;
+            //    }
+            //}
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
@@ -91,32 +108,45 @@ namespace quanlybetong
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            int index;
-            index = dgr_danhsach.CurrentRow.Index;
+            //int index;
+            //index = dgr_danhsach.CurrentRow.Index;
 
-            txt_name.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[1].Value);
-            txt_b.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[2].Value);
-            txt_l.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[3].Value);
-            txt_h.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[4].Value);
+            //txt_name.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[1].Value);
+            //txt_b.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[2].Value);
+            //txt_l.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[3].Value);
+            //txt_h.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[4].Value);
+            if (index > -1)
+            {
+                quanlyvatlieu vl = cls_Bien.DanhSachBeTong[index];
+                quanlyvatlieu vl_new = new quanlyvatlieu()
+                {
+                    Name = txt_name.Text,
+                    ChieuCao = double.Parse(txt_h.Text),
+                    ChieuDai = double.Parse(txt_l.Text),
+                    ChieuRong = double.Parse(txt_b.Text),
+                };
+                cls_Bien.DanhSachBeTong[index] = vl_new;
+                resetView();
+            }
         }
 
         private void txt_dientich_TextChanged(object sender, EventArgs e)
         {
-            double dienTich = double.Parse(txt_dientich.Text);
-            if (dienTich < 500)
-            {
-                lb_dau.Text = string.Format(">", txt_dientich.Text);
-                lb_ketqua.Text = string.Format("Thỏa Mãn", txt_dientich.Text);
-                lb_ketqua.ForeColor = Color.Green;
-            }
-            else if (dienTich > 500)
-            {
-                lb_dau.Text = string.Format("<", txt_dientich.Text);
-                lb_ketqua.Text = string.Format("Chọn Lại", txt_dientich.Text);
-                lb_ketqua.ForeColor = Color.Red;
+            //double dienTich = double.Parse(txt_dientich.Text);
+            //if (dienTich < 500)
+            //{
+            //    lb_dau.Text = string.Format(">", txt_dientich.Text);
+            //    lb_ketqua.Text = string.Format("Thỏa Mãn", txt_dientich.Text);
+            //    lb_ketqua.ForeColor = Color.Green;
+            //}
+            //else if (dienTich > 500)
+            //{
+            //    lb_dau.Text = string.Format("<", txt_dientich.Text);
+            //    lb_ketqua.Text = string.Format("Chọn Lại", txt_dientich.Text);
+            //    lb_ketqua.ForeColor = Color.Red;
 
-                MessageBox.Show("Chọn lại tiết diện cấu kiện", "Thông báo");
-            }
+            //    MessageBox.Show("Chọn lại tiết diện cấu kiện", "Thông báo");
+            //}
         }
 
         private void dgr_danhsach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -141,6 +171,19 @@ namespace quanlybetong
         private void Form1_Load(object sender, EventArgs e)
         {
             dgr_danhsach.CellFormatting += new DataGridViewCellFormattingEventHandler(dgr_danhsach_CellFormatting);
+        }
+        int index = -1;
+        private void dgr_danhsach_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            index = e.RowIndex;
+            if (index > -1)
+            {
+                quanlyvatlieu vl = cls_Bien.DanhSachBeTong[index];
+                txt_name.Text = vl.Name;
+                txt_b.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[2].Value);
+                txt_l.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[3].Value);
+                txt_h.Text = Convert.ToString(dgr_danhsach.Rows[index].Cells[4].Value);
+            }
         }
     }
 }
